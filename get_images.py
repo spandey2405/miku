@@ -9,7 +9,10 @@ for file in files:
         data = json.load(data_file)
     image_name = "gifs/" + data['id'] + ".gif"
     if (data['id'] + ".gif") not in files_gif:
-        urllib.urlretrieve(data['link'], image_name)
-        print image_name
+        try:
+            urllib.urlretrieve(data['link'], image_name)
+            print image_name
+        except:
+            pass
     else:
         print "skipped", image_name
